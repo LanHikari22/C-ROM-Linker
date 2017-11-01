@@ -68,7 +68,7 @@ public class SymbolTable {
             else entry.Ndx = Integer.parseInt(temp);
 //            System.out.print(", " + entry.Ndx);
             // parse Name
-            entry.Name = s.nextLine();
+            entry.Name = s.nextLine().substring(1); // TODO: space not ignored? why?
 //            System.out.println(", " + entry.Name);
             // put entry into table
             output[i] = entry;
@@ -78,7 +78,6 @@ public class SymbolTable {
     }
 
     public Variable[] getVariables(){
-        // TODO: test getVariables()
         ArrayList<Variable> variables = new ArrayList<Variable>();
         for(int i = 0; i < Table.length; i++){
             if(Table[i].Type.equals("OBJECT")){
@@ -96,7 +95,6 @@ public class SymbolTable {
     }
 
     public Function[] getFunctions(){
-        // TODO: test getFunctions()
         ArrayList<Function> functions = new ArrayList<Function>();
         for(int i = 0; i < Table.length; i++) {
             if (Table[i].Type.equals("FUNC")) {

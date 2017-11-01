@@ -72,11 +72,11 @@ public class RelocationTable {
     }
 
     public void setRelocOffsets(Variable[] variables) {
-        // TODO: test setRelocOffsets()
         // TODO: [deternubeRelocOffsets()] O(n^2). Not cool, change it?
         for(int i = 0; i < variables.length; i++) {
             ArrayList<Integer> RelocOffsets = new ArrayList<Integer>();
             for (int j = 0; j < Table.length; j++) {
+                System.out.printf("'%s'  vs  '%s'\n", Table[j].SymName, variables[i].Name);
                 if (Table[j].SymName.equals(variables[i].Name)){
                     RelocOffsets.add(Table[j].Offset);
                 }
