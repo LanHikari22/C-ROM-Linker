@@ -73,7 +73,7 @@ public class SymbolTable {
             // put entry into table
             output[i] = entry;
         }
-        System.out.println(symTableReport);
+//        System.out.println(symTableReport);
         return output;
     }
 

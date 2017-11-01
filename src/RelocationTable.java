@@ -67,7 +67,7 @@ public class RelocationTable {
             output[i] = entry;
         }
 
-        System.out.println(relTableReport);
+//        System.out.println(relTableReport);
         return output;
     }
 
@@ -76,7 +76,6 @@ public class RelocationTable {
         for(int i = 0; i < variables.length; i++) {
             ArrayList<Integer> RelocOffsets = new ArrayList<Integer>();
             for (int j = 0; j < Table.length; j++) {
-                System.out.printf("'%s'  vs  '%s'\n", Table[j].SymName, variables[i].Name);
                 if (Table[j].SymName.equals(variables[i].Name)){
                     RelocOffsets.add(Table[j].Offset);
                 }

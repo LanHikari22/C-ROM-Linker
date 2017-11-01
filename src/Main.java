@@ -6,12 +6,11 @@ public class Main {
     /**
      * TODO: doc main()
      *
-     * @param args Format: {ROM Path} {Path of Object File To Inject}
+     * @param args Format: {ROM Path} {Path of Object File To Inject} (Memory Map Config file [*.mmp])
      */
     public static void main(String[] args) {
         String objFile = "C:\\Users\\alzakariyamq\\Development\\ARM\\new.o";
-//        String type = "RELOCATION_TABLE";
-        String type = "SYMBOL_TABLE";
+        String memoryMapPath = "ROM_Memory_Map.mmp";
         try {
             // Get the array of variables and functions from the symbol table
             String output = runBatScript("GetObjSymbols " + objFile + " " + "SYMBOL_TABLE");
@@ -22,7 +21,19 @@ public class Main {
             output = runBatScript("GetObjSymbols " + objFile + " " + "RELOCATION_TABLE");
             RelocationTable relTbl = new RelocationTable(output);
             relTbl.setRelocOffsets(variables);
-            System.out.printf("We're done!\n");
+
+            // Now we need to know where the text sections and the data sections are in the object file
+            output = runBatScript("GetObjSymbols " + objFile + " " + "SECTION_HEADERS");
+            // We also need to know where in the ROM (and RAM) to put things. This basically loads our ROM Memory map config file.
+            MemoryMap mmp = new MemoryMap(memoryMapPath);
+            // The data section class will handle assigning RAM addreses to the variables, as well as determining the content..
+//            DataSection.setupVariables(mmp, output, variables);
+            // The text section class will handle assigning actual ROM addresses to functions, determining their content,
+            // as well as replacing all function relative global variable references to their appropriate values in RAM.
+//            TextSection.setupFunctions(mmp, output, variables, functions);
+            // Done! Time to inject this stuff into ROM!
+            // TODO: Implement injection logic
+
         } catch(IOException e){
             System.err.println(e.getMessage());
         }
