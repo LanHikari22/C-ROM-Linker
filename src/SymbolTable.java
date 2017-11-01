@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class SymbolTable {
@@ -77,10 +78,38 @@ public class SymbolTable {
     }
 
     public Variable[] getVariables(){
-        return null;
+        // TODO: test getVariables()
+        ArrayList<Variable> variables = new ArrayList<Variable>();
+        for(int i = 0; i < Table.length; i++){
+            if(Table[i].Type.equals("OBJECT")){
+                Variable var = new Variable();
+                var.Name = Table[i].Name;
+                var.RelAddress = Table[i].Value;
+                var.Size = Table[i].Size;
+                variables.add(var);
+            }
+        }
+
+        Variable[] output = new Variable[variables.size()];
+        output = variables.toArray(output);
+        return output;
     }
 
     public Function[] getFunctions(){
-        return null;
+        // TODO: test getFunctions()
+        ArrayList<Function> functions = new ArrayList<Function>();
+        for(int i = 0; i < Table.length; i++) {
+            if (Table[i].Type.equals("FUNC")) {
+                Function func = new Function();
+                func.Name = Table[i].Name;
+                func.RelAddress = Table[i].Value;
+                func.Size = Table[i].Size;
+                functions.add(func);
+            }
+        }
+
+        Function[] output = new Function[functions.size()];
+        output = functions.toArray(output);
+        return output;
     }
 }

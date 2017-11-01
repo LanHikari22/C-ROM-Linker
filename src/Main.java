@@ -13,10 +13,16 @@ public class Main {
 //        String type = "RELOCATION_TABLE";
         String type = "SYMBOL_TABLE";
         try {
+            // Get the array of variables and functions from the symbol table
             String output = runBatScript("GetObjSymbols " + objFile + " " + "SYMBOL_TABLE");
             SymbolTable symTbl = new SymbolTable(output);
+            Variable[] variables = symTbl.getVariables();
+            Function[] functions = symTbl.getFunctions();
+            // Find out where the variables are used in the functions so that you can modify the RAM reference
             output = runBatScript("GetObjSymbols " + objFile + " " + "RELOCATION_TABLE");
             RelocationTable relTbl = new RelocationTable(output);
+            relTbl.setRelocOffsets(variables);
+            System.out.printf("We're done!\n");
         } catch(IOException e){
             System.err.println(e.getMessage());
         }

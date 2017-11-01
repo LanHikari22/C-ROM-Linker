@@ -1,6 +1,8 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class RelocationTable {
+
     /**
      * An Entry object represents one row in the symbol table.
      */
@@ -67,6 +69,23 @@ public class RelocationTable {
 
         System.out.println(relTableReport);
         return output;
+    }
+
+    public void setRelocOffsets(Variable[] variables) {
+        // TODO: test setRelocOffsets()
+        // TODO: [deternubeRelocOffsets()] O(n^2). Not cool, change it?
+        for(int i = 0; i < variables.length; i++) {
+            ArrayList<Integer> RelocOffsets = new ArrayList<Integer>();
+            for (int j = 0; j < Table.length; j++) {
+                if (Table[j].SymName.equals(variables[i].Name)){
+                    RelocOffsets.add(Table[j].Offset);
+                }
+            }
+
+            Integer[] temp = new Integer[RelocOffsets.size()];
+            temp = RelocOffsets.toArray(temp);
+            variables[i].RelocOffsets = temp;
+        }
     }
 
 }
