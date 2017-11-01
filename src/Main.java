@@ -13,9 +13,10 @@ public class Main {
 //        String type = "RELOCATION_TABLE";
         String type = "SYMBOL_TABLE";
         try {
-            String output = runBatScript("GetObjSymbols " + objFile + " " + type);
+            String output = runBatScript("GetObjSymbols " + objFile + " " + "SYMBOL_TABLE");
             SymbolTable symTbl = new SymbolTable(output);
-
+            output = runBatScript("GetObjSymbols " + objFile + " " + "RELOCATION_TABLE");
+            RelocationTable relTbl = new RelocationTable(output);
         } catch(IOException e){
             System.err.println(e.getMessage());
         }

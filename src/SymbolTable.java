@@ -28,6 +28,12 @@ public class SymbolTable {
         Table = parse(symTableReport);
     }
 
+    /**
+     * parses the symTableReport, which is the output of the arm-none-eabi-readelf program for the symbol table into
+     * an array of Entries and returns that.
+     * @param symTableReport    Table to prase
+     * @return The array of the parsed entries
+     */
     private static Entry[] parse(String symTableReport) {
         Scanner s = new Scanner(symTableReport);
         // ignore initial line
@@ -63,8 +69,18 @@ public class SymbolTable {
             // parse Name
             entry.Name = s.nextLine();
 //            System.out.println(", " + entry.Name);
+            // put entry into table
+            output[i] = entry;
         }
-//        System.out.println(symTableReport);
+        System.out.println(symTableReport);
         return output;
+    }
+
+    public Variable[] getVariables(){
+        return null;
+    }
+
+    public Function[] getFunctions(){
+        return null;
     }
 }
