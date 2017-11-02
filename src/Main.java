@@ -22,12 +22,14 @@ public class Main {
             RelocationTable relTbl = new RelocationTable(output);
             relTbl.setRelocOffsets(variables);
 
+            // Configure the memory map object to be used to determine where variabels and functions are placed
             // Now we need to know where the text sections and the data sections are in the object file
             output = runBatScript("GetObjSymbols " + objFile + " " + "SECTION_HEADERS");
             // We also need to know where in the ROM (and RAM) to put things. This basically loads our ROM Memory map config file.
-            MemoryMap mmp = new MemoryMap(memoryMapPath);
+            MemoryMap mmp = new MemoryMap(memoryMapPath, output);
+
             // The data section class will handle assigning RAM addreses to the variables, as well as determining the content..
-//            DataSection.setupVariables(mmp, output, variables);
+            DataSection.setupVariables(mmp, variables);
             // The text section class will handle assigning actual ROM addresses to functions, determining their content,
             // as well as replacing all function relative global variable references to their appropriate values in RAM.
 //            TextSection.setupFunctions(mmp, output, variables, functions);
@@ -72,6 +74,7 @@ public class Main {
                 sb_error.append((s.nextLine() + "\n"));
             throw new IOException(sb_error.toString());
         }
+
         return sb.toString();
     }
 }
