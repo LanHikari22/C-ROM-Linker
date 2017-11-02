@@ -5,28 +5,40 @@ import java.util.Scanner;
 
 public class MemoryMap {
 
-    /**
-     * The addresses for RAM are absolute, since are written to variables and since functions are modified to match
-     * The addresses for ROM are relative to the actual ROM file, since they are used for injecting the functions into the ROM.
-     */
-    public Segment[] getData() {
-        return Data;
+    public Segment getDataSegment(int segIndex) {
+        return DataSegments[segIndex];
     }
 
-    public Segment getText() {
-        return Text;
+    public int getDataSegmentsLength(){
+        return DataSegments.length;
+    }
+
+    public Segment getTextSegment() {
+        return TextSegment;
+    }
+
+    public int getDataSectionOffset() {
+        return dataSectionOffset;
+    }
+
+    public int getTextSectionOffset() {
+        return textSectionOffset;
     }
 
     /**
      * A memory segment in ROM or RAM. Consists of a start address, and a size.
      */
-    private class Segment{
+    public class Segment{
         public int Address;
         public int Size;
     }
 
-    private Segment[] Data;
-    private Segment Text;
+    /**
+     * The addresses for RAM are absolute, since are written to variables and since functions are modified to match
+     * The addresses for ROM are relative to the actual ROM file, since they are used for injecting the functions into the ROM.
+     */
+    private Segment[] DataSegments;
+    private Segment TextSegment;
     private int dataSectionOffset;
     private int textSectionOffset;
 
@@ -41,10 +53,10 @@ public class MemoryMap {
     private void parseTextAndDataSegments(String memoryMapPath) throws IOException {
         Scanner s = new Scanner(Paths.get(memoryMapPath));
         if(!s.nextLine().equals("TEXT")) throw new IOException("Invalid mmp format: Expected TEXT to be first line.");
-        // Parse the Text Segment
-        Text = new Segment();
-        Text.Address = s.nextInt(16);
-        Text.Size = s.nextInt(10);
+        // Parse the TextSegment Segment
+        TextSegment = new Segment();
+        TextSegment.Address = s.nextInt(16);
+        TextSegment.Size = s.nextInt(10);
         s.nextLine();
         if(!s.nextLine().equals("DATA")) throw new IOException("Invalid mmp format: Expected DATA to be the third line.");
         // There can be variable segments for data, so parse them all
@@ -56,9 +68,9 @@ public class MemoryMap {
             s.nextLine();
             dataArrayList.add(seg);
         }
-        // Assign arraylist to Data Array of segments
-        Data = new Segment[dataArrayList.size()];
-        Data = dataArrayList.toArray(getData());
+        // Assign arraylist to DataSegments Array of segments
+        DataSegments = new Segment[dataArrayList.size()];
+        DataSegments = dataArrayList.toArray(DataSegments);
 
         // That is all! Thank you, thank you! Bye bye!
         s.close();
@@ -101,7 +113,7 @@ public class MemoryMap {
         output = s.nextInt(16);
 
 //        System.out.println(headerSectionReport);
-        System.out.printf("%08x", output);
+//        System.out.printf("%08x", output);
 
         return output;
     }

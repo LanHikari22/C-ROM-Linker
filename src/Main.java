@@ -1,4 +1,6 @@
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class Main {
@@ -29,10 +31,11 @@ public class Main {
             MemoryMap mmp = new MemoryMap(memoryMapPath, output);
 
             // The data section class will handle assigning RAM addreses to the variables, as well as determining the content..
-            DataSection.setupVariables(mmp, variables);
+            byte[] objBuf = createBuffer(objFile);
+            DataSection.setupVariables(objBuf, mmp, variables);
             // The text section class will handle assigning actual ROM addresses to functions, determining their content,
             // as well as replacing all function relative global variable references to their appropriate values in RAM.
-//            TextSection.setupFunctions(mmp, output, variables, functions);
+//            TextSection.setupFunctions(objBuf, mmp, variables, functions);
             // Done! Time to inject this stuff into ROM!
             // TODO: Implement injection logic
 
@@ -40,6 +43,21 @@ public class Main {
             System.err.println(e.getMessage());
         }
 
+    }
+
+    /**
+     * TODO: doc createBuffer()
+     * @param path
+     * @return
+     */
+    private static byte[] createBuffer(String path) {
+        byte[] output = null;
+        try {
+            output = Files.readAllBytes(Paths.get(path));
+        } catch(IOException e){
+            System.err.println("Error while executing createBuffer(): " + e.getMessage());
+        }
+        return output;
     }
 
     /**
