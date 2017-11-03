@@ -13,6 +13,7 @@ public class Main {
     public static void main(String[] args) {
         String objFile = "C:\\Users\\alzakariyamq\\Development\\ARM\\new.o";
         String memoryMapPath = "ROM_Memory_Map.mmp";
+        String ROM_path = "BlankFile";
         try {
             // Get the array of variables and functions from the symbol table
             String output = runBatScript("GetObjSymbols " + objFile + " " + "SYMBOL_TABLE");
@@ -35,14 +36,27 @@ public class Main {
             DataSection.setupVariables(objBuf, mmp, variables);
             // The text section class will handle assigning actual ROM addresses to functions, determining their content,
             // as well as replacing all function relative global variable references to their appropriate values in RAM.
-//            TextSection.setupFunctions(objBuf, mmp, variables, functions);
-            // Done! Time to inject this stuff into ROM!
+            TextSection.setupFunctions(objBuf, mmp, variables, functions);
+
+            // Yay! Time to inject this stuff into ROM! We will use a temporary file to send data to the ROMInjector module.
+            for(int i = 0; i < functions.length; i++) {
+                System.out.printf("%s: (Address= 0x%08x) (Rel.Address= 0x%x)\n", functions[i].Name, functions[i].Address, functions[i].RelAddress);
+                writeIntoFile("function.bin", functions[i]);
+                System.out.println("inject_into_ROM " + ROM_path + " function.bin " + String.format("0x%08x", functions[i].Address));
+                System.out.println(
+                        runBatScript("inject_into_ROM " + ROM_path + " function.bin " + String.format("0x%08x", functions[i].Address))
+                );
+            }
             // TODO: Implement injection logic
 
         } catch(IOException e){
             System.err.println(e.getMessage());
         }
 
+    }
+
+    private static void writeIntoFile(String path, Function function) throws IOException {
+        Files.write(Paths.get(path), function.Content);
     }
 
     /**

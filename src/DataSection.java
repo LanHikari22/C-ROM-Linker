@@ -10,7 +10,7 @@ public class DataSection {
      * @param variables
      */
     public static void setupVariables(byte[] objBuf, MemoryMap mmp, Variable[] variables) {
-        // TODO: test setupVariables()
+        // TODO: test setupVariables() (Yay! It passed initial tests!)
         int segCsr = 0;
         int resourceCsr = 0;
         for(int i = 0; i < variables.length; i++){
@@ -49,11 +49,5 @@ public class DataSection {
                 throw new OutOfMemoryError("ALL MEMORY RESOURCES HAVE BEEN DEPLETED");
             }
         }
-    }
-
-
-
-    private static void setupContent(MemoryMap mmp, Variable[] variables) {
-        int offset = 0;
     }
 }
