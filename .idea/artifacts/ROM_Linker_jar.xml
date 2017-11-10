@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ROM_Linker:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ROM_Linker_jar</output-path>
+    <root id="archive" name="ROM_Linker.jar">
+      <element id="module-output" name="ROM_Linker" />
+    </root>
+  </artifact>
+</component>

@@ -71,8 +71,10 @@ public class RelocationTable {
         return output;
     }
 
-    public void setRelocOffsets(Variable[] variables) {
+    public void setRelocOffsets(Variable[] variables, Function[] functions) {
         // TODO: [deternubeRelocOffsets()] O(n^2). Not cool, change it?
+
+        // Setup all relocation offsets for each variable
         for(int i = 0; i < variables.length; i++) {
             ArrayList<Integer> RelocOffsets = new ArrayList<Integer>();
             for (int j = 0; j < Table.length; j++) {
@@ -80,11 +82,41 @@ public class RelocationTable {
                     RelocOffsets.add(Table[j].Offset);
                 }
             }
-
             Integer[] temp = new Integer[RelocOffsets.size()];
             temp = RelocOffsets.toArray(temp);
             variables[i].RelocOffsets = temp;
         }
+
+        // Setup all relocation offsets for each function
+        for(int i = 0; i < functions.length; i++) {
+            ArrayList<Integer> RelocOffsets = new ArrayList<Integer>();
+            for (int j = 0; j < Table.length; j++) {
+                if (Table[j].SymName.equals(functions[i].Name)){
+                    RelocOffsets.add(Table[j].Offset);
+                }
+            }
+            Integer[] temp = new Integer[RelocOffsets.size()];
+            temp = RelocOffsets.toArray(temp);
+            functions[i].RelocOffsets = temp;
+        }
+
+    }
+
+    /**
+     * Returns all relocation offsets for all read-only references in functions. These can be fixed in the text section
+     * to include absolute paths.
+     * @return an array of the offsets in the text section to be modified
+     */
+    public Integer[] getRoDataRelocOffsets(){
+        ArrayList<Integer> offsets = new ArrayList<>();
+        for (Entry entry : Table) {
+            if (entry.SymName.equals(".rodata")) {
+                offsets.add(entry.Offset);
+            }
+        }
+        Integer[] output = new Integer[offsets.size()];
+        output = offsets.toArray(output);
+        return output;
     }
 
 }

@@ -1,7 +1,3 @@
-import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-
 public class DataSection {
     /**
      * TODO doc setupVariables()
@@ -25,7 +21,7 @@ public class DataSection {
 
                     // Get the content of the variable in object file. It is at the variable's relative address.
                     variables[i].Value = new byte[variables[i].Size];
-                    int startIndex = mmp.getDataSectionOffset() + variables[i].RelAddress;
+                    int startIndex = mmp.getObjDataSectionOffset() + variables[i].RelAddress;
                     int endIndex = startIndex + variables[i].Size;
                     for(int j = startIndex; j<endIndex; j++){
                         variables[i].Value[j - startIndex] = objBuf[j];

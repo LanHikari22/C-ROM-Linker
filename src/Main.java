@@ -11,19 +11,29 @@ public class Main {
      * @param args Format: {ROM Path} {Path of Object File To Inject} (Memory Map Config file [*.mmp])
      */
     public static void main(String[] args) {
-        String objFile = "C:\\Users\\alzakariyamq\\Development\\ARM\\new.o";
-        String memoryMapPath = "ROM_Memory_Map.mmp";
-        String ROM_path = "BlankFile";
+        if(args.length < 3) {
+            System.err.println("Invalid argument format to ROM Linker. Format: <ROM> <ObjFile> <MemMap.mmp> [suppressReport (true/false)]");
+            return;
+        }
+        String objFile = args[1]; // "C:\\Users\\alzakariyamq\\Development\\ARM\\new.o";
+        String memoryMapPath = args[2]; // "ROM_Memory_Map.mmp";
+        String ROM_path = args[0]; // "BlankFile";
+        boolean suppressReport = false;
+        if(args.length == 4)
+            suppressReport = new Scanner(args[3]).nextBoolean();
+
         try {
             // Get the array of variables and functions from the symbol table
             String output = runBatScript("GetObjSymbols " + objFile + " " + "SYMBOL_TABLE");
             SymbolTable symTbl = new SymbolTable(output);
             Variable[] variables = symTbl.getVariables();
             Function[] functions = symTbl.getFunctions();
+
             // Find out where the variables are used in the functions so that you can modify the RAM reference
+            // Also find out where the functions are called so you can modify dummy BLs.
             output = runBatScript("GetObjSymbols " + objFile + " " + "RELOCATION_TABLE");
             RelocationTable relTbl = new RelocationTable(output);
-            relTbl.setRelocOffsets(variables);
+            relTbl.setRelocOffsets(variables, functions);
 
             // Configure the memory map object to be used to determine where variabels and functions are placed
             // Now we need to know where the text sections and the data sections are in the object file
@@ -34,20 +44,36 @@ public class Main {
             // The data section class will handle assigning RAM addreses to the variables, as well as determining the content..
             byte[] objBuf = createBuffer(objFile);
             DataSection.setupVariables(objBuf, mmp, variables);
+
+            // Now account for fixing references to .rodata
+            RoDataSection rodatasection = new RoDataSection(mmp, objBuf, relTbl);
+
             // The text section class will handle assigning actual ROM addresses to functions, determining their content,
             // as well as replacing all function relative global variable references to their appropriate values in RAM.
+            // It will also replace all dummy BL calls.
             TextSection.setupFunctions(objBuf, mmp, variables, functions);
 
+
             // Yay! Time to inject this stuff into ROM! We will use a temporary file to send data to the ROMInjector module.
+            // Injecting .rodata
+            rodatasection.writeContentIntoFile("temp.bin");
+            runBatScript("inject_into_ROM " + ROM_path + " temp.bin " + String.format("0x%08x", mmp.getRoDataSegment().Address));
+            // Injecting all functions
+            if(!suppressReport)
+                System.out.println(); // Just a new line so the report is nicely formatted
             for(int i = 0; i < functions.length; i++) {
-                System.out.printf("%s: (Address= 0x%08x) (Rel.Address= 0x%x)\n", functions[i].Name, functions[i].Address, functions[i].RelAddress);
-                writeIntoFile("function.bin", functions[i]);
-                System.out.println("inject_into_ROM " + ROM_path + " function.bin " + String.format("0x%08x", functions[i].Address));
-                System.out.println(
-                        runBatScript("inject_into_ROM " + ROM_path + " function.bin " + String.format("0x%08x", functions[i].Address))
-                );
+                if (suppressReport) {
+                    writeIntoFile("temp.bin", functions[i]);
+                    runBatScript("inject_into_ROM " + ROM_path + " temp.bin " + String.format("0x%08x", functions[i].Address));
+                } else {
+                    System.out.printf("%s: (Address= 0x%08x)\n", functions[i].Name, functions[i].Address, functions[i].RelAddress);
+                    writeIntoFile("temp.bin", functions[i]);
+                    System.out.println("Injecting into ROM...");
+                    System.out.println(
+                            runBatScript("inject_into_ROM " + ROM_path + " temp.bin " + String.format("0x%08x", functions[i].Address))
+                    );
+                }
             }
-            // TODO: Implement injection logic
 
         } catch(IOException e){
             System.err.println(e.getMessage());

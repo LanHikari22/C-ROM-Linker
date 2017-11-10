@@ -18,6 +18,7 @@ public class SymbolTable {
 
         static final int Ndx_UND = -1;
         static final int Ndx_ABS = -2;
+        static final int Ndx_COM = -3;
     }
 
     /**
@@ -65,6 +66,7 @@ public class SymbolTable {
             temp = s.next();
             if(temp.equals("UND")) entry.Ndx = Entry.Ndx_UND;
             else if(temp.equals("ABS")) entry.Ndx = Entry.Ndx_ABS;
+            else if(temp.equals("COM")) entry.Ndx = Entry.Ndx_COM;
             else entry.Ndx = Integer.parseInt(temp);
 //            System.out.print(", " + entry.Ndx);
             // parse Name
