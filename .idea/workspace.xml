@@ -7,39 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8118aa6a-ff8c-4398-a92f-b9dcf2c83da9" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Tests/Default/ROM_Linker.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Tests/Default/TextGenerator.o" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Tests/Default/beep.o" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Tests/Default/function.bin" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Tests/Default/main.o" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Tests/Default/mmbn6ge.gba" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Tests/Default/mmbn6ge.sa1" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Tests/Default/mmbn6ge.sa2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Tests/Default/mmbn6ge.sav" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Tests/Default/mmbn6ge.ss1" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Tests/Default/mmbn6ge1.sg1" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Tests/Default/mmbn6ge1.sg2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Tests/Default/output.o" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Tests/Default/temp.bin" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Tests/mmbn6ge.gba" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Tests/Default/GetObjSymbols.bat" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Tests/Default/ROM_Memory_Map.mmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Tests/Default/RomInjector.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Tests/Default/inject_into_ROM.bat" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Tests/Default/makefile" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Tests/src/MMBN6.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Tests/src/TextGenerator.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Tests/src/TextGenerator.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Tests/src/beep.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Tests/src/beep.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Tests/src/inttypes.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Tests/src/main.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/ROM_Linker_jar/ROM_Linker.jar" afterPath="$PROJECT_DIR$/out/artifacts/ROM_Linker_jar/ROM_Linker.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ROM_Linker/DataSection.class" afterPath="$PROJECT_DIR$/out/production/ROM_Linker/DataSection.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ROM_Linker/Main.class" afterPath="$PROJECT_DIR$/out/production/ROM_Linker/Main.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DataSection.java" afterPath="$PROJECT_DIR$/src/DataSection.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/Main.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -77,11 +46,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.c" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Tests/src/main.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="478">
-              <caret line="111" column="24" lean-forward="true" selection-start-line="111" selection-start-column="24" selection-end-line="111" selection-end-column="24" />
+            <state relative-caret-position="257">
+              <caret line="98" column="23" lean-forward="true" selection-start-line="98" selection-start-column="23" selection-end-line="98" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ROM_Memory_Map.mmp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ROM_Memory_Map.mmp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="3" lean-forward="false" selection-start-line="0" selection-start-column="3" selection-end-line="0" selection-end-column="3" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="15" column="8" lean-forward="false" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -148,12 +137,13 @@
         <option value="$PROJECT_DIR$/Tests/Default/makefile" />
         <option value="$PROJECT_DIR$/src/DataSection.java" />
         <option value="$PROJECT_DIR$/Tests/src/main.c" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="943" />
-    <option name="y" value="270" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
     <option name="width" value="1400" />
     <option name="height" value="1000" />
   </component>
@@ -376,7 +366,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="943" y="270" width="1400" height="1000" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -385,14 +375,14 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39325842" sideWeight="0.5223988" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36997885" sideWeight="0.52135414" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39325842" sideWeight="0.47760117" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36997885" sideWeight="0.47864583" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18020834" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -677,14 +667,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ROM_Memory_Map.mmp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="3" lean-forward="false" selection-start-line="0" selection-start-column="3" selection-end-line="0" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/RelocationTable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -818,8 +800,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Tests/src/main.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="478">
-          <caret line="111" column="24" lean-forward="true" selection-start-line="111" selection-start-column="24" selection-end-line="111" selection-end-column="24" />
+        <state relative-caret-position="257">
+          <caret line="98" column="23" lean-forward="true" selection-start-line="98" selection-start-column="23" selection-end-line="98" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ROM_Memory_Map.mmp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="3" lean-forward="false" selection-start-line="0" selection-start-column="3" selection-end-line="0" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="8" lean-forward="false" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
           <folding />
         </state>
       </provider>
