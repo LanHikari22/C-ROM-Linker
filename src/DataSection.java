@@ -14,10 +14,7 @@ public class DataSection {
             while(segCsr < mmp.getDataSegmentsLength() && !configuredVariable) {
                 if (resourceCsr <= mmp.getDataSegment(segCsr).Address + mmp.getDataSegment(segCsr).Size - 4) {
                     // Set up the variable's address in RAM
-                    variables[i].Address = mmp.getDataSegment(segCsr).Address + variables[i].RelAddress;
-                    // align address with 4 bytes
-                    int pad = (4 - variables[i].Address % 4) % 4; // must allign with 4 TODO: investigate this, might always align with 4
-                    variables[i].Address += pad;
+                    variables[i].Address = mmp.getDataSegment(segCsr).Address + resourceCsr;
 
                     // Get the content of the variable in object file. It is at the variable's relative address.
                     variables[i].Value = new byte[variables[i].Size];

@@ -110,7 +110,7 @@ public class Main {
      */
     private static String runBatScript(String batScript) throws IOException {
         StringBuilder sb = new StringBuilder();
-        Process p = Runtime.getRuntime().exec("cmd /c \"\" " + batScript);
+        Process p = Runtime.getRuntime().exec("cmd /c  \"\" " + batScript); // TODO: why do you need ""?
         Scanner s = new Scanner(p.getInputStream());
 
         // first two lines are "\n" and "echo off".
